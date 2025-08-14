@@ -9,6 +9,7 @@ import { Avatar } from '@/components/avatar';
 import { SendIcon } from 'lucide-react';
 import { ChatHeader } from '@/components/chat-header';
 import { Button } from '@/components/ui/button';
+import Markdown from 'markdown-to-jsx';
 
 export default function ChatPage() {
     const formRef = useRef<HTMLFormElement>(null);
@@ -18,7 +19,7 @@ export default function ChatPage() {
 
     const { messages, sendMessage, status } = useChat({
         transport: new DefaultChatTransport({
-            api: '/api/chat/histesh',
+            api: '/api/chat/hitesh',
         }),
         messages: [
             {
@@ -57,11 +58,14 @@ export default function ChatPage() {
                             message.role === 'user' ? "" : "bg-primary-50",
                         )}>
                             <Avatar profile='hitesh' isUser={message.role === 'user'} />
-                            {message.parts.map(part => {
-                                if (part.type === 'text') {
-                                    return <div key={`${message.id}-text`} className='py-1.5 md:py-1 space-y-4'>{part.text}</div>;
-                                }
-                            })}
+                            <div className='py-1.5 md:py-1 space-y-4'>
+                                {message.parts.map((part, partIndex) => {
+                                    if (part.type === 'text') {
+                                        return <Markdown key={`${message.id}-${partIndex}`} className='py-1.5 md:py-1 space-y-2'>{part.text}</Markdown>;
+                                    }
+                                    return null;
+                                })}
+                            </div>
                         </div>
                     ))}
 

@@ -1,3 +1,4 @@
+import { SYSTEM_PROMPTS } from '@/constant/system-prompts';
 import { openai } from '@ai-sdk/openai';
 import { streamText, UIMessage, convertToModelMessages } from 'ai';
 
@@ -8,7 +9,7 @@ export async function POST(req: Request) {
 
     const result = streamText({
         model: openai('gpt-4o'),
-        system: 'You are a skillfull doctor ad only answer medical related questions.',
+        system: SYSTEM_PROMPTS.piyush,
         messages: convertToModelMessages(messages),
     });
 
