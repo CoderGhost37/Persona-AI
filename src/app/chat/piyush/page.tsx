@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import { useChat } from '@ai-sdk/react';
-import { DefaultChatTransport } from 'ai';
+import { DefaultChatTransport, UIMessage } from 'ai';
 import { MessageLoading } from '@/components/message-loading';
 import { Avatar } from '@/components/avatar';
 import { SendIcon } from 'lucide-react';
@@ -52,10 +52,10 @@ export default function ChatPage() {
             <ChatHeader profile='piyush' />
             <main className="relative max-w-screen-md px-4 md:px-6 mx-auto flex min-h-[calc(100svh-56px)] pt-4">
                 <div className="w-full h-[calc(100svh-56px-100px)] overflow-auto">
-                    {messages.map((message, index) => (
+                    {messages.map((message: UIMessage, index) => (
                         <div key={index} className={cn(
                             "mb-4 flex items-start gap-4 p-4 md:p-5 rounded-2xl",
-                            message.role === 'user' ? "" : "bg-primary-50",
+                            message.role === 'user' ? "" : "bg-card",
                         )}>
                             <Avatar profile='piyush' isUser={message.role === 'user'} />
                             <div className='py-1.5 md:py-1 space-y-4'>
