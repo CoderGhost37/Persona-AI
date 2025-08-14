@@ -2,30 +2,14 @@ import Image from "next/image";
 import Link from 'next/link';
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { buttonVariants } from '@/components/ui/button';
 import { MessageCircleIcon } from 'lucide-react';
-
-const cardsData = [
-  {
-    href: '/chat/hitesh',
-    image: '/images/hitesh-sir.png',
-    name: 'Hitesh Choudhary',
-    description: 'Founder, Content Creator, Educator and Entrepreneur who makes programming accessible'
-  },
-  {
-    href: '/chat/piyush',
-    image: '/images/piyush-sir.png',
-    name: 'Piyush Garg',
-    description: 'Content Creator, Educator and Entrepreneur specializing in backend development and system design.'
-  }
-]
+import { data } from '@/constant/data';
 
 export default function Home() {
   return (
@@ -43,8 +27,8 @@ export default function Home() {
           </h2>
 
           <div className="mt-8 px-4 md:px-8 flex flex-col md:flex-row gap-4 md:gap-12 justify-center items-center">
-            {cardsData.map((card) => (
-              <Card key={card.name} className='group w-full'>
+            {data.map((card) => (
+              <Card key={card.id} className='group w-full'>
                 <CardHeader>
                   <div className="flex items-center gap-4">
                     <Image src={card.image} alt={card.name} width={100} height={100} className='rounded-full h-14 w-auto object-cover' />
