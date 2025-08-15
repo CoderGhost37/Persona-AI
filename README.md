@@ -1,3 +1,7 @@
+#Persona AI Project
+Persona AI is a modern, interactive AI persona chat built with Next.js (App Router), Tailwind CSS, and the OpenAI API. It offers real-time streaming responses conversation history.
+Live Project URL: https://persona-ai-omega.vercel.app/
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
